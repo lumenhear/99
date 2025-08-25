@@ -3,188 +3,1325 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LUMEN Speech and Hearing Care | Your Journey to Better Hearing</title>
-    <meta name="description" content="LUMEN offers professional speech therapy, audiology tests, hearing aids, and cochlear implant support. Start your journey to better hearing with us.">
-    
+    <title>LUMEN Speech and Hearing Care</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    <style>
+        :root {
+            --primary-blue: #1E90FF;
+            --primary-white: #FFFFFF;
+            --deep-navy: #112A46;
+            --slate-gray: #55667D;
+            --light-slate: #F0F4F8;
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Lato', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--slate-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            color: var(--deep-navy);
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-blue);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: var(--primary-blue);
+            color: var(--primary-white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn:hover {
+            background-color: var(--primary-white);
+            color: var(--primary-blue);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-3px);
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 15px 0;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-svg {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo-svg circle.outer {
+            fill: none;
+            stroke: var(--deep-navy);
+            stroke-width: 2;
+        }
+
+        .logo-svg path.wave {
+            fill: none;
+            stroke: var(--primary-blue);
+            stroke-width: 2;
+            stroke-linecap: round;
+        }
+
+        .logo-text {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--deep-navy);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--deep-navy);
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover:after,
+        nav ul li a.active:after {
+            width: 100%;
+        }
+
+        .contact-number {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--deep-navy);
+            font-weight: 600;
+        }
+
+        .contact-number i {
+            margin-right: 8px;
+            color: var(--primary-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-waves {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 600px;
+            z-index: 0;
+            opacity: 0.7;
+        }
+
+        .hero-waves path {
+            stroke: var(--primary-blue);
+            stroke-width: 1.5;
+            fill: none;
+            stroke-linecap: round;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            color: var(--slate-gray);
+        }
+
+        /* Services Section */
+        .services {
+            background-color: var(--primary-white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .service-card {
+            background-color: var(--light-slate);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            height: 250px;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
+        }
+
+        .service-icon path {
+            stroke: var(--deep-navy);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon path {
+            stroke: var(--primary-blue);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover h3 {
+            color: var(--primary-blue);
+        }
+
+        .service-description {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            right: 30px;
+        }
+
+        .service-card:hover .service-description {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* About Us Section */
+        .about {
+            background-color: var(--light-slate);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: var(--primary-white);
+            position: relative;
+        }
+
+        .testimonials-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial-card {
+            background-color: var(--light-slate);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 0 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .testimonial-quote {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 5rem;
+            color: var(--primary-blue);
+            opacity: 0.2;
+            font-family: serif;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--deep-navy);
+        }
+
+        .testimonial-rating {
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .testimonial-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--slate-gray);
+            opacity: 0.3;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-dot.active {
+            opacity: 1;
+            background-color: var(--primary-blue);
+            transform: scale(1.2);
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--light-slate);
+        }
+
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+
+        .contact-form {
+            flex: 1;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--deep-navy);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-blue);
+            outline: none;
+        }
+
+        .form-group.error input,
+        .form-group.error textarea {
+            border-color: #ff3860;
+        }
+
+        .error-message {
+            color: #ff3860;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .form-group.error .error-message {
+            display: block;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .info-item {
+            display: flex;
+            margin-bottom: 25px;
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary-white);
+            font-size: 1.2rem;
+        }
+
+        .info-content h4 {
+            margin-bottom: 5px;
+        }
+
+        .map-container {
+            height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-top: 30px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .whatsapp-fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-fab:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--deep-navy);
+            color: var(--primary-white);
+            padding: 70px 0 0;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-column h3 {
+            color: var(--primary-white);
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+        }
+
+        .footer-column p {
+            opacity: 0.8;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--primary-white);
+            opacity: 0.8;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--primary-blue);
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--primary-white);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 0;
+            }
+            
+            .header-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 10px 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            section {
+                padding: 70px 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial-card {
+                padding: 30px 20px;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-
-    <header id="main-header">
-        <div class="container">
-            <a href="#home" class="logo">
-                <svg width="50" height="50" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="50" r="48" stroke="#1E90FF" stroke-width="4"/>
-                    <path d="M60 25 C75 40, 75 60, 60 75" stroke="#1E90FF" stroke-width="4" stroke-linecap="round"/>
-                    <path d="M70 15 C90 40, 90 60, 70 85" stroke="#1E90FF" stroke-width="4" stroke-linecap="round"/>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <svg class="logo-svg" viewBox="0 0 100 100">
+                    <circle class="outer" cx="50" cy="50" r="45" />
+                    <path class="wave" d="M30,50 Q50,30 70,50" />
+                    <path class="wave" d="M25,50 Q50,20 75,50" />
+                    <path class="wave" d="M20,50 Q50,10 80,50" />
                 </svg>
-                <span>LUMEN</span>
-            </a>
+                <span class="logo-text">LUMEN</span>
+            </div>
             <nav>
                 <ul>
-                    <li><a href="#home">Home</a></li>
+                    <li><a href="#home" class="active">Home</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#testimonials">Testimonials</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
-            <a href="tel:9350158754" class="header-contact">📞 9350158754</a>
+            <a href="tel:9350158754" class="contact-number">
+                <i class="fas fa-phone"></i> 9350158754
+            </a>
         </div>
     </header>
 
-    <main>
-
-        <section id="home" class="hero">
-            <div id="particles-js"></div>
-            <div class="hero-content">
-                <div class="hero-waves">
-                    <svg width="200" height="200" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="50" cy="50" r="20" stroke="rgba(30, 144, 255, 0.5)" stroke-width="2"><animate attributeName="r" from="20" to="45" dur="2s" begin="0s" repeatCount="indefinite"/><animate attributeName="opacity" from="1" to="0" dur="2s" begin="0s" repeatCount="indefinite"/></circle>
-                        <circle cx="50" cy="50" r="25" stroke="rgba(30, 144, 255, 0.7)" stroke-width="2"><animate attributeName="r" from="25" to="50" dur="2s" begin="0.5s" repeatCount="indefinite"/><animate attributeName="opacity" from="1" to="0" dur="2s" begin="0.5s" repeatCount="indefinite"/></circle>
-                    </svg>
-                </div>
-                <h1 class="hero-tagline">Your Journey to Better Hearing Starts Here</h1>
-                <a href="#services" class="cta-button">Explore Our Services</a>
-            </div>
-        </section>
-
-        <section id="services">
-            <div class="container">
-                <h2 class="section-title">Comprehensive Care Services</h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="card-icon">...</div>
-                        <h3>Speech Therapy</h3>
-                        <p class="card-description">Personalized therapy plans to improve communication skills for all ages.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="card-icon">...</div>
-                        <h3>Audiology & Hearing Tests</h3>
-                        <p class="card-description">State-of-the-art diagnostic testing to accurately assess your hearing health.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="card-icon">...</div>
-                        <h3>Hearing Aid Fitting</h3>
-                        <p class="card-description">Expert fitting and programming of the latest digital hearing aids.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="card-icon">...</div>
-                        <h3>Cochlear Implant Support</h3>
-                        <p class="card-description">Comprehensive mapping and rehabilitation for cochlear implant users.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="card-icon">...</div>
-                        <h3>Pediatric Speech Delay</h3>
-                        <p class="card-description">Early intervention and playful therapy for child development milestones.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="card-icon">...</div>
-                        <h3>Stuttering Therapy</h3>
-                        <p class="card-description">Effective strategies and support to build fluent and confident speech.</p>
-                    </div>
-                     <div class="service-card">
-                        <div class="card-icon">...</div>
-                        <h3>Voice Therapy</h3>
-                        <p class="card-description">Specialized treatment for voice disorders to restore vocal health and quality.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="about">
-            <div class="container about-container">
-                <div class="about-image anim-element">
-                    <img src="https://images.pexels.com/photos/7657416/pexels-photo-7657416.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Friendly audiologist at LUMEN clinic">
-                </div>
-                <div class="about-content anim-element">
-                    <h2 class="section-title">About LUMEN Care</h2>
-                    <p>At LUMEN, we are dedicated to providing the highest standard of care in a warm and welcoming environment. Our patient-first approach means we listen to your needs and craft personalized treatment plans using the latest technology and evidence-based practices.</p>
-                    <p>Our team of certified audiologists and speech-language pathologists is committed to helping you reconnect with the world through better hearing and confident communication.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="testimonials">
-            <div class="container">
-                <h2 class="section-title">What Our Patients Say</h2>
-                <div class="testimonial-slider">
-                    <div class="testimonial-wrapper">
-                        <div class="testimonial-card">
-                            <p>"The team at LUMEN changed my life. Their patience and expertise in fitting my hearing aids were exceptional. I can hear my grandchildren laugh again."</p>
-                            <cite>- R. Sharma</cite>
-                        </div>
-                        <div class="testimonial-card">
-                            <p>"My daughter's speech has improved dramatically thanks to the wonderful therapists here. The sessions are fun and engaging for her. Highly recommend!"</p>
-                            <cite>- A. Verma</cite>
-                        </div>
-                        <div class="testimonial-card">
-                            <p>"Professional, compassionate, and highly skilled. The diagnostic process was thorough, and every step was explained clearly. A truly top-class clinic."</p>
-                            <cite>- S. Kumar</cite>
-                        </div>
-                    </div>
-                    <div class="testimonial-nav">
-                        <button class="nav-dot active"></button>
-                        <button class="nav-dot"></button>
-                        <button class="nav-dot"></button>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="contact">
-            <div class="container contact-container">
-                <div class="contact-form-wrapper anim-element">
-                    <h2 class="section-title">Get in Touch</h2>
-                    <form id="contact-form">
-                        <div class="form-group">
-                            <input type="text" id="name" name="name" required placeholder="Your Name">
-                            <p class="error-message"></p>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" required placeholder="Your Email">
-                            <p class="error-message"></p>
-                        </div>
-                         <div class="form-group">
-                            <input type="tel" id="phone" name="phone" required placeholder="Your Phone">
-                            <p class="error-message"></p>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" name="message" rows="5" required placeholder="Your Message"></textarea>
-                            <p class="error-message"></p>
-                        </div>
-                        <button type="submit" class="cta-button">Send Message</button>
-                    </form>
-                    <div id="form-success-message" style="display: none;">
-                        <h3>Thank you!</h3>
-                        <p>Your message has been sent. We'll be in touch soon.</p>
-                    </div>
-                </div>
-                <div class="contact-info anim-element">
-                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d111551.4988712093!2d75.65487604335938!3d29.155716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391232d807664687%3A0x446e0a818815f949!2sHisar%2C%20Haryana!5e0!3m2!1sen!2sin!4v1724620953123!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 LUMEN Speech and Hearing Care. All Rights Reserved.</p>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div id="particles-js"></div>
+        <svg class="hero-waves" viewBox="0 0 600 200">
+            <path d="M0,100 Q150,50 300,100 T600,100" />
+            <path d="M0,120 Q150,70 300,120 T600,120" />
+            <path d="M0,140 Q150,90 300,140 T600,140" />
+            <path d="M0,80 Q150,30 300,80 T600,80" />
+            <path d="M0,60 Q150,10 300,60 T600,60" />
+        </svg>
+        <div class="container hero-content">
+            <h1>LUMEN Speech and Hearing Care</h1>
+            <p>Your Journey to Better Hearing Starts Here</p>
+            <a href="#services" class="btn">Explore Our Services</a>
         </div>
-    </footer>
-    
-    <a href="https://wa.me/919350158754?text=Hello%20LUMEN%20Care,%20I%20would%20like%20to%20inquire%20about%20your%20services." class="whatsapp-fab" target="_blank" aria-label="Contact us on WhatsApp">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="white"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.8 0-67.6-9.5-97.2-27.2l-6.9-4.1-72.1 18.9L99 352.5l-4.5-7.3c-18.9-30.1-29.6-65.4-29.6-101.9 0-110.4 89.9-200.2 200.2-200.2 54.5 0 105.7 21.2 144.3 59.8 38.6 38.6 59.8 90.1 59.8 144.3-.1 110.4-89.9 200.2-200.2 200.2zM223.9 148.1c-9.9 0-17.9 8-17.9 17.9v95.8c0 9.9 8 17.9 17.9 17.9h95.8c9.9 0 17.9-8 17.9-17.9s-8-17.9-17.9-17.9h-78v-77.8c0-9.9-8-17.9-17.9-17.9zm0 0"/></svg>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <!-- Service Card 1 -->
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 100 100">
+                        <path d="M30,70 L70,70 M50,70 L50,30 M35,50 L65,50" stroke-width="5" />
+                        <circle cx="50" cy="20" r="10" fill="none" stroke-width="5" />
+                    </svg>
+                    <h3>Speech Therapy</h3>
+                    <div class="service-description">
+                        <p>Comprehensive assessment and treatment for speech and language disorders for all ages.</p>
+                    </div>
+                </div>
+                
+                <!-- Service Card 2 -->
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 100 100">
+                        <path d="M30,30 L70,70 M70,30 L30,70" stroke-width="5" />
+                        <circle cx="50" cy="50" r="35" fill="none" stroke-width="5" />
+                    </svg>
+                    <h3>Audiology & Hearing Tests</h3>
+                    <div class="service-description">
+                        <p>State-of-the-art diagnostic hearing evaluations to assess your auditory hearing evaluations to assess your auditory health.</p>
+                    </div>
+                </div>
+                
+                <!-- Service Card 3 -->
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 100 100">
+                        <path d="M25,70 L75,70 M40,40 L60,40 M40,50 L60,50 M40,60 L60,60" stroke-width="5" />
+                        <circle cx="50" cy="25" r="15" fill="none" stroke-width="5" />
+                    </svg>
+                    <h3>Hearing Aid Fitting & Services</h3>
+                    <div class="service-description">
+                        <p>Professional fitting and ongoing support for the latest hearing aid technology.</p>
+                    </div>
+                </div>
+                
+                <!-- Additional service cards would follow the same pattern -->
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="40" fill="none" stroke-width="5" />
+                        <circle cx="50" cy="50" r="25" fill="none" stroke-width="5" />
+                        <path d="M30,30 L70,70 M70,30 L30,70" stroke-width="5" />
+                    </svg>
+                    <h3>Cochlear Implant Support</h3>
+                    <div class="service-description">
+                        <p>Comprehensive evaluation, programming, and rehabilitation for cochlear implant users.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 100 100">
+                        <circle cx="35" cy="35" r="15" fill="none" stroke-width="5" />
+                        <circle cx="65" cy="65" r="15" fill="none" stroke-width="5" />
+                        <path d="M30,50 Q50,30 70,50" stroke-width="5" />
+                    </svg>
+                    <h3>Pediatric Speech-Language Delay</h3>
+                    <div class="service-description">
+                        <p>Specialized therapy for children experiencing delays in speech and language development.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 100 100">
+                        <path d="M30,50 Q40,30 50,50 T70,50" stroke-width="5" />
+                        <path d="M30,60 Q40,40 50,60 T70,60" stroke-width="5" />
+                        <path d="M30,70 Q40,50 50,70 T70,70" stroke-width="5" />
+                    </svg>
+                    <h3>Stuttering & Fluency Therapy</h3>
+                    <div class="service-description">
+                        <p>Evidence-based techniques to improve fluency and communication confidence.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 100 100">
+                        <path d="M30,50 Q50,30 70,50 T100,50" stroke-width="5" fill="none" />
+                        <circle cx="30" cy="50" r="5" />
+                        <circle cx="50" cy="30" r="5" />
+                        <circle cx="70" cy="50" r="5" />
+                    </svg>
+                    <h3>Voice Therapy</h3>
+                    <div class="service-description">
+                        <p>Treatment for voice disorders to improve vocal quality and endurance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <!-- Placeholder for clinic image -->
+                    <div style="width: 100%; height: 400px; background: linear-gradient(45deg, #1E90FF, #112A46); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                        Clinic Image
+                    </div>
+                </div>
+                <div class="about-text">
+                    <p>At LUMEN Speech and Hearing Care, we are dedicated to providing exceptional, personalized care to individuals with communication challenges. Our team of licensed and certified speech-language pathologists and audiologists is committed to helping you achieve your communication goals.</p>
+                    <p>We utilize the latest technology and evidence-based practices to ensure the best possible outcomes for our patients. Our compassionate approach focuses on building trusting relationships and creating a supportive environment for growth and healing.</p>
+                    <p>Whether you're seeking help for yourself or a loved one, we're here to guide you through every step of your journey to better communication.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2>What Our Patients Say</h2>
+            <div class="testimonials-container">
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">The team at LUMEN transformed my life. After struggling with hearing loss for years, I can now fully participate in conversations and enjoy time with my family again. Their personalized approach made all the difference.</p>
+                    <p class="testimonial-author">- Rajesh M.</p>
+                </div>
+                <div class="testimonial-nav">
+                    <div class="testimonial-dot active"></div>
+                    <div class="testimonial-dot"></div>
+                    <div class="testimonial-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                            <div class="error-message">Please enter your name</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                            <div class="error-message">Please enter a valid email address</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone" required>
+                            <div class="error-message">Please enter a valid phone number</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <div class="error-message">Please enter your message</div>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                    <div id="successMessage" style="display: none; margin-top: 20px; padding: 20px; background-color: #d4edda; color: #155724; border-radius: 8px;">
+                        Thank you! We'll be in touch soon.
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Address</h4>
+                            <p>123 Healthcare Avenue, Medical District, Bangalore, 560001</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Working Hours</h4>
+                            <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 2:00 PM<br>Sunday: Closed</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Phone</h4>
+                            <p>9350158754</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Email</h4>
+                            <p>info@lumencare.com</p>
+                        </div>
+                    </div>
+                    <div class="map-container">
+                        <!-- Placeholder for Google Maps -->
+                        <div style="width: 100%; height: 100%; background: #ddd; display: flex; align-items: center; justify-content: center; color: #666;">
+                            Google Maps Embed
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp FAB -->
+    <a href="https://wa.me/919350158754?text=Hello%20LUMEN%20Care,%20I%20would%20like%20to%20inquire%20about%20your%20services." target="_blank" class="whatsapp-fab">
+        <i class="fab fa-whatsapp"></i>
     </a>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="script.js"></script>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>LUMEN</h3>
+                    <p>Providing exceptional speech and hearing care with compassion and expertise.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Healthcare Avenue, Bangalore</p>
+                    <p><i class="fas fa-phone"></i> 9350158754</p>
+                    <p><i class="fas fa-envelope"></i> info@lumencare.com</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 LUMEN Speech and Hearing Care. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Particles.js
+            particlesJS('particles-js', {
+                particles: {
+                    number: {
+                        value: 80,
+                        density: {
+                            enable: true,
+                            value_area: 800
+                        }
+                    },
+                    color: {
+                        value: "#1E90FF"
+                    },
+                    shape: {
+                        type: "circle",
+                        stroke: {
+                            width: 0,
+                            color: "#000000"
+                        }
+                    },
+                    opacity: {
+                        value: 0.5,
+                        random: true,
+                        anim: {
+                            enable: true,
+                            speed: 1,
+                            opacity_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    size: {
+                        value: 3,
+                        random: true
+                    },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: "#1E90FF",
+                        opacity: 0.4,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 2,
+                        direction: "none",
+                        random: true,
+                        straight: false,
+                        out_mode: "out",
+                        bounce: false
+                    }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: {
+                        onhover: {
+                            enable: true,
+                            mode: "grab"
+                        },
+                        onclick: {
+                            enable: true,
+                            mode: "push"
+                        },
+                        resize: true
+                    },
+                    modes: {
+                        grab: {
+                            distance: 140,
+                            line_linked: {
+                                opacity: 1
+                            }
+                        },
+                        push: {
+                            particles_nb: 4
+                        }
+                    }
+                },
+                retina_detect: true
+            });
+
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('nav a, .btn').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId.startsWith('#')) {
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            gsap.to(window, {
+                                duration: 1,
+                                scrollTo: {y: targetElement, offsetY: 70},
+                                ease: "power2.inOut"
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Logo animation
+            const logoWaves = document.querySelectorAll('.logo-svg path.wave');
+            logoWaves.forEach((wave, index) => {
+                gsap.to(wave, {
+                    duration: 1.5,
+                    opacity: 0.6,
+                    scale: 1.05,
+                    repeat: -1,
+                    yoyo: true,
+                    delay: index * 0.2,
+                    ease: "sine.inOut"
+                });
+            });
+
+            // Hero text animation
+            gsap.from('.hero h1', {
+                duration: 1,
+                y: 50,
+                opacity: 0,
+                ease: "power3.out"
+            });
+            
+            gsap.from('.hero p', {
+                duration: 1,
+                y: 30,
+                opacity: 0,
+                delay: 0.3,
+                ease: "power3.out"
+            });
+            
+            gsap.from('.hero .btn', {
+                duration: 1,
+                y: 30,
+                opacity: 0,
+                delay: 0.6,
+                ease: "power3.out"
+            });
+
+            // Hero waves animation
+            const heroWaves = document.querySelectorAll('.hero-waves path');
+            heroWaves.forEach((wave, index) => {
+                gsap.to(wave, {
+                    duration: 3 + index,
+                    attr: {
+                        d: `M0,${100 + index*20} Q150,${50 + index*20} 300,${100 + index*20} T600,${100 + index*20}`
+                    },
+                    repeat: -1,
+                    yoyo: true,
+                    ease: "sine.inOut"
+                });
+            });
+
+            // Service card animations
+            gsap.utils.toArray('.service-card').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    gsap.to(card, {
+                        duration: 0.3,
+                        scale: 1.05,
+                        y: -10,
+                        ease: "power2.out"
+                    });
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    gsap.to(card, {
+                        duration: 0.3,
+                        scale: 1,
+                        y: 0,
+                        ease: "power2.out"
+                    });
+                });
+            });
+
+            // Scroll animations for sections
+            gsap.utils.toArray('section').forEach(section => {
+                gsap.from(section, {
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top 80%",
+                        toggleActions: "play none none none"
+                    },
+                    opacity: 0,
+                    y: 50,
+                    duration: 1,
+                    ease: "power2.out"
+                });
+            });
+
+            // Testimonial carousel
+            const testimonials = [
+                {
+                    text: "The team at LUMEN transformed my life. After struggling with hearing loss for years, I can now fully participate in conversations and enjoy time with my family again. Their personalized approach made all the difference.",
+                    author: "Rajesh M.",
+                    rating: 5
+                },
+                {
+                    text: "My child's speech has improved dramatically since starting therapy at LUMEN. The therapists are patient, knowledgeable, and truly care about their patients. I couldn't be happier with the results.",
+                    author: "Priya S.",
+                    rating: 5
+                },
+                {
+                    text: "Professional, compassionate, and effective. The hearing aid fitting process was thorough, and the follow-up care has been exceptional. I highly recommend LUMEN to anyone with hearing challenges.",
+                    author: "Arun K.",
+                    rating: 5
+                }
+            ];
+
+            let currentTestimonial = 0;
+            const testimonialElement = document.querySelector('.testimonial-card');
+            const testimonialText = document.querySelector('.testimonial-text');
+            const testimonialAuthor = document.querySelector('.testimonial-author');
+            const testimonialRating = document.querySelector('.testimonial-rating');
+            const dots = document.querySelectorAll('.testimonial-dot');
+
+            function showTestimonial(index) {
+                const testimonial = testimonials[index];
+                
+                gsap.to(testimonialElement, {
+                    duration: 0.5,
+                    opacity: 0,
+                    y: 20,
+                    onComplete: () => {
+                        testimonialText.textContent = testimonial.text;
+                        testimonialAuthor.textContent = `- ${testimonial.author}`;
+                        
+                        let stars = '';
+                        for (let i = 0; i < testimonial.rating; i++) {
+                            stars += '<i class="fas fa-star"></i>';
+                        }
+                        testimonialRating.innerHTML = stars;
+                        
+                        dots.forEach((dot, i) => {
+                            dot.classList.toggle('active', i === index);
+                        });
+                        
+                        gsap.to(testimonialElement, {
+                            duration: 0.5,
+                            opacity: 1,
+                            y: 0
+                        });
+                    }
+                });
+            }
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentTestimonial = index;
+                    showTestimonial(currentTestimonial);
+                });
+            });
+
+            // Auto-advance testimonials
+            setInterval(() => {
+                currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+                showTestimonial(currentTestimonial);
+            }, 5000);
+
+            // Form validation
+            const contactForm = document.getElementById('contactForm');
+            const successMessage = document.getElementById('successMessage');
+            
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                let isValid = true;
+                
+                // Name validation
+                const nameInput = document.getElementById('name');
+                const nameError = nameInput.nextElementSibling;
+                if (nameInput.value.trim() === '') {
+                    nameInput.parentElement.classList.add('error');
+                    isValid = false;
+                } else {
+                    nameInput.parentElement.classList.remove('error');
+                }
+                
+                // Email validation
+                const emailInput = document.getElementById('email');
+                const emailError = emailInput.nextElementSibling;
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(emailInput.value)) {
+                    emailInput.parentElement.classList.add('error');
+                    isValid = false;
+                } else {
+                    emailInput.parentElement.classList.remove('error');
+                }
+                
+                // Phone validation
+                const phoneInput = document.getElementById('phone');
+                const phoneError = phoneInput.nextElementSibling;
+                if (phoneInput.value.trim() === '') {
+                    phoneInput.parentElement.classList.add('error');
+                    isValid = false;
+                } else {
+                    phoneInput.parentElement.classList.remove('error');
+                }
+                
+                // Message validation
+                const messageInput = document.getElementById('message');
+                const messageError = messageInput.nextElementSibling;
+                if (messageInput.value.trim() === '') {
+                    messageInput.parentElement.classList.add('error');
+                    isValid = false;
+                } else {
+                    messageInput.parentElement.classList.remove('error');
+                }
+                
+                if (isValid) {
+                    // In a real application, you would submit the form data to a server here
+                    // For this demo, we'll just show the success message
+                    contactForm.style.display = 'none';
+                    successMessage.style.display = 'block';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
